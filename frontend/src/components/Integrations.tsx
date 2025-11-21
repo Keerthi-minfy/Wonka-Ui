@@ -787,20 +787,6 @@ export function Integrations() {
               </div>
             </div>
 
-            {/* Search Box */}
-            <div className="mt-4">
-              <div className="relative max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search integrations..."
-                  className="pl-10"
-                  style={{ backgroundColor: '#1a1a2e', border: '1px solid #2a2a3e' }}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
-
             {/* Protocol Description Cards */}
             <div style={{
               display: 'grid',
@@ -894,12 +880,14 @@ export function Integrations() {
           {/* Connected/Available Views */}
           <TabsContent value={viewMode} className="space-y-6">
             {/* Search and Filter */}
-            <div className="flex items-center gap-4">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-500" />
-                <Input
+            <div className="flex items-center gap-4" style={{ marginTop: '15px' }}>
+              <div className="flex items-center flex-1 max-w-md h-10 px-3 rounded-lg" style={{ backgroundColor: '#1a1a2e', border: '1px solid #2a2a3e' }}>
+                <Search className="h-4 w-4 text-slate-500 mr-2 flex-shrink-0" />
+                <input
+                  type="text"
                   placeholder="Search integrations..."
-                  className="pl-10 bg-[#1a1a2e] border-[#2a2a3e] text-slate-300 placeholder:text-slate-500"
+                  className="flex-1 bg-transparent border-none outline-none text-slate-300 placeholder:text-slate-500 text-sm"
+                  style={{ background: 'transparent' }}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -913,19 +901,27 @@ export function Integrations() {
                 const isActive = selectedCategory === category.id;
 
                 return (
-                  <Button
+                  <button
                     key={category.id}
-                    variant={isActive ? "default" : "outline"}
-                    size="sm"
-                    className={`gap-2 ${isActive ? 'bg-white text-slate-900' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white'}`}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all whitespace-nowrap"
+                    style={{
+                      backgroundColor: isActive ? '#ffffff' : 'transparent',
+                      color: isActive ? '#0f172a' : '#cbd5e1',
+                      border: isActive ? '1px solid #ffffff' : '1px solid #475569'
+                    }}
                     onClick={() => setSelectedCategory(category.id)}
                   >
-                    <Icon className="h-3 w-3" />
-                    {category.label}
-                    <Badge variant="secondary" className={`ml-1 text-xs ${isActive ? 'bg-slate-200 text-slate-900' : 'bg-slate-700 text-slate-300'}`}>
+                    <Icon className="h-4 w-4 flex-shrink-0" />
+                    <span className="whitespace-nowrap">{category.label}</span>
+                    <span
+                      className="text-sm flex-shrink-0"
+                      style={{
+                        color: isActive ? '#0f172a' : '#94a3b8'
+                      }}
+                    >
                       {category.count}
-                    </Badge>
-                  </Button>
+                    </span>
+                  </button>
                 );
               })}
             </div>
