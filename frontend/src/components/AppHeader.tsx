@@ -143,10 +143,10 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
             style={{
               position: 'fixed',
               width: '200px',
-              backgroundColor: '#ffffff',
-              border: '1px solid #e5e7eb',
+              backgroundColor: '#0f1419',
+              border: '1px solid #2a2a3e',
               borderRadius: '8px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
               zIndex: 9999,
               top: '60px',
               right: '15px'
@@ -161,20 +161,20 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                   width: '100%',
                   padding: '10px 16px',
                   fontSize: '14px',
-                  color: '#374151',
+                  color: '#cbd5e1',
                   background: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
                   textAlign: 'left'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1a1a2e'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 onClick={() => {
                   setShowUserDropdown(false);
                   setShowProfileModal(true);
                 }}
               >
-                <UserCircle style={{ width: '16px', height: '16px', color: '#6b7280' }} />
+                <UserCircle style={{ width: '16px', height: '16px', color: '#9ca3af' }} />
                 View Profile
               </button>
               <button
@@ -185,20 +185,20 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                   width: '100%',
                   padding: '10px 16px',
                   fontSize: '14px',
-                  color: '#374151',
+                  color: '#cbd5e1',
                   background: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
                   textAlign: 'left'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1a1a2e'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 onClick={() => {
                   setShowUserDropdown(false);
                   setShowPasswordModal(true);
                 }}
               >
-                <Key style={{ width: '16px', height: '16px', color: '#6b7280' }} />
+                <Key style={{ width: '16px', height: '16px', color: '#9ca3af' }} />
                 Change Password
               </button>
               <button
@@ -209,20 +209,20 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                   width: '100%',
                   padding: '10px 16px',
                   fontSize: '14px',
-                  color: '#374151',
+                  color: '#cbd5e1',
                   background: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
                   textAlign: 'left'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1a1a2e'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 onClick={() => {
                   setShowUserDropdown(false);
                   onLogout?.();
                 }}
               >
-                <LogOut style={{ width: '16px', height: '16px', color: '#6b7280' }} />
+                <LogOut style={{ width: '16px', height: '16px', color: '#9ca3af' }} />
                 Logout
               </button>
             </div>
@@ -251,10 +251,10 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
               position: 'fixed',
               width: '380px',
               maxHeight: '450px',
-              backgroundColor: '#ffffff',
-              border: '1px solid #e5e7eb',
+              backgroundColor: '#0f1419',
+              border: '1px solid #2a2a3e',
               borderRadius: '8px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
               zIndex: 9999,
               top: '60px',
               right: '50px',
@@ -267,14 +267,14 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
               justifyContent: 'space-between',
               alignItems: 'center',
               padding: '16px 20px',
-              borderBottom: '1px solid #e5e7eb'
+              borderBottom: '1px solid #2a2a3e'
             }}>
-              <span style={{ fontSize: '16px', fontWeight: '600', color: '#111827' }}>Notifications</span>
+              <span style={{ fontSize: '16px', fontWeight: '600', color: '#ffffff' }}>Notifications</span>
               <button
                 style={{
                   background: 'transparent',
                   border: 'none',
-                  color: '#6366f1',
+                  color: '#FF9900',
                   fontSize: '14px',
                   cursor: 'pointer'
                 }}
@@ -294,10 +294,10 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                     alignItems: 'flex-start',
                     gap: '12px',
                     padding: '14px 20px',
-                    borderBottom: '1px solid #f3f4f6',
+                    borderBottom: '1px solid #1a1a2e',
                     cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1a1a2e'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
                   {/* Unread dot */}
@@ -307,7 +307,7 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                         display: 'inline-block',
                         width: '8px',
                         height: '8px',
-                        backgroundColor: '#6366f1',
+                        backgroundColor: '#FF9900',
                         borderRadius: '50%'
                       }} />
                     )}
@@ -319,20 +319,20 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    backgroundColor: '#e0f2fe',
+                    backgroundColor: 'rgba(255, 153, 0, 0.15)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0
                   }}>
-                    <Activity style={{ width: '18px', height: '18px', color: '#0ea5e9' }} />
+                    <Activity style={{ width: '18px', height: '18px', color: '#FF9900' }} />
                   </div>
 
                   {/* Content */}
                   <div style={{ flex: 1 }}>
                     <p style={{
                       fontSize: '14px',
-                      color: '#374151',
+                      color: '#cbd5e1',
                       margin: 0,
                       lineHeight: '1.4'
                     }}>
@@ -340,7 +340,7 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                     </p>
                     <span style={{
                       fontSize: '12px',
-                      color: '#9ca3af',
+                      color: '#6b7280',
                       marginTop: '4px',
                       display: 'block'
                     }}>
