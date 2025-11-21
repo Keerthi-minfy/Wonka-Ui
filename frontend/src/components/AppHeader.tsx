@@ -372,7 +372,7 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '6px' }}>
               Full Name
             </label>
             <input
@@ -382,14 +382,16 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                 width: '100%',
                 padding: '10px 12px',
                 fontSize: '14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #2a2a3e',
                 borderRadius: '6px',
-                outline: 'none'
+                outline: 'none',
+                backgroundColor: '#1a1a2e',
+                color: '#ffffff'
               }}
             />
           </div>
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '6px' }}>
               Email
             </label>
             <input
@@ -399,14 +401,16 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                 width: '100%',
                 padding: '10px 12px',
                 fontSize: '14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #2a2a3e',
                 borderRadius: '6px',
-                outline: 'none'
+                outline: 'none',
+                backgroundColor: '#1a1a2e',
+                color: '#ffffff'
               }}
             />
           </div>
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '6px' }}>
               Role
             </label>
             <input
@@ -417,10 +421,10 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                 width: '100%',
                 padding: '10px 12px',
                 fontSize: '14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #2a2a3e',
                 borderRadius: '6px',
                 outline: 'none',
-                backgroundColor: '#f3f4f6',
+                backgroundColor: '#0a0a0f',
                 color: '#6b7280'
               }}
             />
@@ -446,7 +450,7 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '6px' }}>
               Current Password
             </label>
             <input
@@ -456,14 +460,16 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                 width: '100%',
                 padding: '10px 12px',
                 fontSize: '14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #2a2a3e',
                 borderRadius: '6px',
-                outline: 'none'
+                outline: 'none',
+                backgroundColor: '#1a1a2e',
+                color: '#ffffff'
               }}
             />
           </div>
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '6px' }}>
               New Password
             </label>
             <input
@@ -473,14 +479,16 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                 width: '100%',
                 padding: '10px 12px',
                 fontSize: '14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #2a2a3e',
                 borderRadius: '6px',
-                outline: 'none'
+                outline: 'none',
+                backgroundColor: '#1a1a2e',
+                color: '#ffffff'
               }}
             />
           </div>
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '6px' }}>
               Confirm New Password
             </label>
             <input
@@ -490,9 +498,11 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                 width: '100%',
                 padding: '10px 12px',
                 fontSize: '14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #2a2a3e',
                 borderRadius: '6px',
-                outline: 'none'
+                outline: 'none',
+                backgroundColor: '#1a1a2e',
+                color: '#ffffff'
               }}
             />
           </div>

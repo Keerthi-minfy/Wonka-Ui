@@ -53,9 +53,10 @@ export function Modal({ isOpen, onClose, title, children, footer, width = '500px
             width: width,
             maxWidth: '90vw',
             maxHeight: '90vh',
-            backgroundColor: '#ffffff',
+            backgroundColor: '#0f1419',
             borderRadius: '12px',
-            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            border: '1px solid #2a2a3e',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden'
@@ -69,14 +70,14 @@ export function Modal({ isOpen, onClose, title, children, footer, width = '500px
               alignItems: 'center',
               justifyContent: 'space-between',
               padding: '16px 24px',
-              borderBottom: '1px solid #e5e7eb'
+              borderBottom: '1px solid #2a2a3e'
             }}
           >
             <h2 style={{
               margin: 0,
               fontSize: '18px',
               fontWeight: '600',
-              color: '#111827'
+              color: '#ffffff'
             }}>
               {title}
             </h2>
@@ -92,10 +93,10 @@ export function Modal({ isOpen, onClose, title, children, footer, width = '500px
                 alignItems: 'center',
                 justifyContent: 'center'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1a1a2e'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
-              <X style={{ width: '20px', height: '20px', color: '#6b7280' }} />
+              <X style={{ width: '20px', height: '20px', color: '#9ca3af' }} />
             </button>
           </div>
 
@@ -104,7 +105,8 @@ export function Modal({ isOpen, onClose, title, children, footer, width = '500px
             style={{
               padding: '24px',
               overflowY: 'auto',
-              flex: 1
+              flex: 1,
+              color: '#cbd5e1'
             }}
           >
             {children}
@@ -119,8 +121,8 @@ export function Modal({ isOpen, onClose, title, children, footer, width = '500px
                 justifyContent: 'flex-end',
                 gap: '12px',
                 padding: '16px 24px',
-                borderTop: '1px solid #e5e7eb',
-                backgroundColor: '#f9fafb'
+                borderTop: '1px solid #2a2a3e',
+                backgroundColor: '#0a0a0f'
               }}
             >
               {footer}
@@ -155,14 +157,14 @@ export function ModalButton({ children, onClick, variant = 'secondary', disabled
   const variants: Record<string, React.CSSProperties> = {
     primary: {
       ...baseStyle,
-      backgroundColor: '#6366f1',
-      color: '#ffffff'
+      backgroundColor: '#FF9900',
+      color: '#000000'
     },
     secondary: {
       ...baseStyle,
-      backgroundColor: '#ffffff',
-      color: '#374151',
-      border: '1px solid #d1d5db'
+      backgroundColor: 'transparent',
+      color: '#cbd5e1',
+      border: '1px solid #475569'
     },
     danger: {
       ...baseStyle,
@@ -178,14 +180,14 @@ export function ModalButton({ children, onClick, variant = 'secondary', disabled
       style={variants[variant]}
       onMouseEnter={(e) => {
         if (!disabled) {
-          if (variant === 'primary') e.currentTarget.style.backgroundColor = '#4f46e5';
-          else if (variant === 'secondary') e.currentTarget.style.backgroundColor = '#f3f4f6';
+          if (variant === 'primary') e.currentTarget.style.backgroundColor = '#e68a00';
+          else if (variant === 'secondary') e.currentTarget.style.backgroundColor = '#1a1a2e';
           else if (variant === 'danger') e.currentTarget.style.backgroundColor = '#dc2626';
         }
       }}
       onMouseLeave={(e) => {
-        if (variant === 'primary') e.currentTarget.style.backgroundColor = '#6366f1';
-        else if (variant === 'secondary') e.currentTarget.style.backgroundColor = '#ffffff';
+        if (variant === 'primary') e.currentTarget.style.backgroundColor = '#FF9900';
+        else if (variant === 'secondary') e.currentTarget.style.backgroundColor = 'transparent';
         else if (variant === 'danger') e.currentTarget.style.backgroundColor = '#ef4444';
       }}
     >
