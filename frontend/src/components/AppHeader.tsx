@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Search, Bell, User, LogOut, Activity } from 'lucide-react';
+import { Search, Bell, User, LogOut, Activity, UserCircle, Key } from 'lucide-react';
+import { Modal, ModalButton } from './ui/modal';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 
@@ -42,6 +43,8 @@ const mockNotifications = [
 export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   return (
     <>
@@ -150,7 +153,54 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
             }}
           >
             <div style={{ padding: '8px 0' }}>
-             
+              <button
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  width: '100%',
+                  padding: '10px 16px',
+                  fontSize: '14px',
+                  color: '#374151',
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: 'left'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onClick={() => {
+                  setShowUserDropdown(false);
+                  setShowProfileModal(true);
+                }}
+              >
+                <UserCircle style={{ width: '16px', height: '16px', color: '#6b7280' }} />
+                View Profile
+              </button>
+              <button
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  width: '100%',
+                  padding: '10px 16px',
+                  fontSize: '14px',
+                  color: '#374151',
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: 'left'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onClick={() => {
+                  setShowUserDropdown(false);
+                  setShowPasswordModal(true);
+                }}
+              >
+                <Key style={{ width: '16px', height: '16px', color: '#6b7280' }} />
+                Change Password
+              </button>
               <button
                 style={{
                   display: 'flex',
@@ -303,6 +353,151 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
           </div>
         </>
       )}
+
+      {/* Profile Modal */}
+      <Modal
+        isOpen={showProfileModal}
+        onClose={() => setShowProfileModal(false)}
+        title="User Profile"
+        footer={
+          <>
+            <ModalButton variant="secondary" onClick={() => setShowProfileModal(false)}>
+              Cancel
+            </ModalButton>
+            <ModalButton variant="primary" onClick={() => setShowProfileModal(false)}>
+              Save Changes
+            </ModalButton>
+          </>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+              Full Name
+            </label>
+            <input
+              type="text"
+              defaultValue="John Doe"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                fontSize: '14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                outline: 'none'
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+              Email
+            </label>
+            <input
+              type="email"
+              defaultValue="john.doe@example.com"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                fontSize: '14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                outline: 'none'
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+              Role
+            </label>
+            <input
+              type="text"
+              defaultValue="Administrator"
+              disabled
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                fontSize: '14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                outline: 'none',
+                backgroundColor: '#f3f4f6',
+                color: '#6b7280'
+              }}
+            />
+          </div>
+        </div>
+      </Modal>
+
+      {/* Change Password Modal */}
+      <Modal
+        isOpen={showPasswordModal}
+        onClose={() => setShowPasswordModal(false)}
+        title="Change Password"
+        footer={
+          <>
+            <ModalButton variant="secondary" onClick={() => setShowPasswordModal(false)}>
+              Cancel
+            </ModalButton>
+            <ModalButton variant="primary" onClick={() => setShowPasswordModal(false)}>
+              Update Password
+            </ModalButton>
+          </>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+              Current Password
+            </label>
+            <input
+              type="password"
+              placeholder="Enter current password"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                fontSize: '14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                outline: 'none'
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+              New Password
+            </label>
+            <input
+              type="password"
+              placeholder="Enter new password"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                fontSize: '14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                outline: 'none'
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '6px' }}>
+              Confirm New Password
+            </label>
+            <input
+              type="password"
+              placeholder="Confirm new password"
+              style={{
+                width: '100%',
+                padding: '10px 12px',
+                fontSize: '14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                outline: 'none'
+              }}
+            />
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }
