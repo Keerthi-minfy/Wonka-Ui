@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Bell, User, LogOut, Key, UserCircle } from 'lucide-react';
+import { Search, Bell, User, LogOut, Activity } from 'lucide-react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 
@@ -30,8 +30,18 @@ interface AppHeaderProps {
       //   </p>
       // </div>
 
+// Mock notifications data
+const mockNotifications = [
+  { id: 1, message: "Got a minute? Share your thoughts in the new Pulse Survey.", time: "4d", unread: true },
+  { id: 2, message: "Got a minute? Share your thoughts in the new Pulse Survey.", time: "1w", unread: true },
+  { id: 3, message: "Got a minute? Share your thoughts in the new Pulse Survey.", time: "2w", unread: true },
+  { id: 4, message: "Got a minute? Share your thoughts in the new Pulse Survey.", time: "3w", unread: false },
+  { id: 5, message: "Got a minute? Share your thoughts in the new Pulse Survey.", time: "4w", unread: false },
+];
+
 export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   return (
     <>
@@ -70,20 +80,39 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
           {/* Right Actions */}
           <div className="flex items-center gap-2">
             {/* Notification Icon */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-[#9ca3af] hover:text-white hover:bg-[#1a1a1a] h-9 w-9"
-            >
-              <Bell className="w-4 h-4" />
-            </Button>
+            <div style={{ position: 'relative' }}>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-[#9ca3af] hover:text-white hover:bg-[#1a1a1a] h-9 w-9"
+                onClick={() => {
+                  setShowNotifications(!showNotifications);
+                  setShowUserDropdown(false);
+                }}
+              >
+                <Bell className="w-4 h-4" />
+                {/* Notification badge */}
+                <span style={{
+                  position: 'absolute',
+                  top: '4px',
+                  right: '4px',
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: '#ef4444',
+                  borderRadius: '50%'
+                }} />
+              </Button>
+            </div>
 
             {/* User Profile */}
             <Button
               variant="ghost"
               size="icon"
               className="text-[#9ca3af] hover:text-white hover:bg-[#1a1a1a] h-9 w-9"
-              onClick={() => setShowUserDropdown(!showUserDropdown)}
+              onClick={() => {
+                setShowUserDropdown(!showUserDropdown);
+                setShowNotifications(false);
+              }}
             >
               <User className="w-4 h-4" />
             </Button>
@@ -146,6 +175,130 @@ export function AppHeader({ currentUser, onLogout }: AppHeaderProps) {
                 <LogOut style={{ width: '16px', height: '16px', color: '#6b7280' }} />
                 Logout
               </button>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Notifications Dropdown */}
+      {showNotifications && (
+        <>
+          {/* Backdrop */}
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 9998,
+              background: 'transparent'
+            }}
+            onClick={() => setShowNotifications(false)}
+          />
+          <div
+            style={{
+              position: 'fixed',
+              width: '380px',
+              maxHeight: '450px',
+              backgroundColor: '#ffffff',
+              border: '1px solid #e5e7eb',
+              borderRadius: '8px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              zIndex: 9999,
+              top: '60px',
+              right: '50px',
+              overflow: 'hidden'
+            }}
+          >
+            {/* Header */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '16px 20px',
+              borderBottom: '1px solid #e5e7eb'
+            }}>
+              <span style={{ fontSize: '16px', fontWeight: '600', color: '#111827' }}>Notifications</span>
+              <button
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#6366f1',
+                  fontSize: '14px',
+                  cursor: 'pointer'
+                }}
+                onClick={() => {}}
+              >
+                Mark all as read
+              </button>
+            </div>
+
+            {/* Notifications List */}
+            <div style={{ maxHeight: '350px', overflowY: 'auto' }}>
+              {mockNotifications.map((notification) => (
+                <div
+                  key={notification.id}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '12px',
+                    padding: '14px 20px',
+                    borderBottom: '1px solid #f3f4f6',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                >
+                  {/* Unread dot */}
+                  <div style={{ paddingTop: '6px' }}>
+                    {notification.unread && (
+                      <span style={{
+                        display: 'inline-block',
+                        width: '8px',
+                        height: '8px',
+                        backgroundColor: '#6366f1',
+                        borderRadius: '50%'
+                      }} />
+                    )}
+                    {!notification.unread && <span style={{ width: '8px', display: 'inline-block' }} />}
+                  </div>
+
+                  {/* Icon */}
+                  <div style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    backgroundColor: '#e0f2fe',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Activity style={{ width: '18px', height: '18px', color: '#0ea5e9' }} />
+                  </div>
+
+                  {/* Content */}
+                  <div style={{ flex: 1 }}>
+                    <p style={{
+                      fontSize: '14px',
+                      color: '#374151',
+                      margin: 0,
+                      lineHeight: '1.4'
+                    }}>
+                      {notification.message}
+                    </p>
+                    <span style={{
+                      fontSize: '12px',
+                      color: '#9ca3af',
+                      marginTop: '4px',
+                      display: 'block'
+                    }}>
+                      {notification.time}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </>
